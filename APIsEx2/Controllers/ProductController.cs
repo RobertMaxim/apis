@@ -20,7 +20,7 @@ namespace APIsEx.Controllers
             this._mapper = mapper;
         }
 
-        [Route("Get")]
+        [Route("GetAllProducts")]
         [HttpGet]
         public async Task<ActionResult<Product>> GetFirstProducts()
         {
@@ -33,10 +33,28 @@ namespace APIsEx.Controllers
             {
                 return BadRequest();
             }
-
-
         }
 
+        [Route("GetNumberOfProds")]
+        [HttpGet]
+        //functie
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<ProductDto>> GetProduct(int id)
+        {
+            try
+            {
+                var product=await _repository.GetProductAsync(id);
+                if (product == null) return NotFound($"Couldn't find a product with the ID: {id}");
+                return _mapper.Map<ProductDto>(product);
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,"Failed to get products");
+            }
+        }
+
+        [Route("PostOneProduct")]
         [HttpPost]
         public async Task<ActionResult<ProductDto>> Post(ProductDto productDto)
         {

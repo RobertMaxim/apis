@@ -9,6 +9,7 @@ namespace APIsEx.Data.Profiles
         public ProductProfile()
         {
             CreateMap<ProductDto, Product>();
+            CreateMap<Product, ProductDto>();
         }
     }
 }
