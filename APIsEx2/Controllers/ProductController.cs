@@ -88,5 +88,28 @@ namespace APIsEx.Controllers
 
             return BadRequest();
         }
+
+        [HttpPut]
+        public async Task<ActionResult<ProductDto>> Put(int productID, ProductDto product)
+        {
+            try
+            {
+                var existingProductWithId = await _repository.GetProductAsync(productID);
+                if (existingProductWithId == null) return NotFound($"Couldn't find a product with specified ID {productID}");
+
+                _mapper.Map(product, existingProductWithId);
+
+                if (await _repository.SaveChangesAsync())
+                {
+                    return _mapper.Map<ProductDto>(existingProductWithId);
+                }
+                else return BadRequest("Failed to update database");
+            }
+
+            catch(Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
+            }
+        }
     }
 }

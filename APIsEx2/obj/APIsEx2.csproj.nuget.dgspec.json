@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\roby_\\source\\repos\\apisex2\\apisex2\\APIsEx2.csproj": {}
+    "C:\\Users\\roby_\\source\\repos\\APIsEx2\\apisex2\\APIsEx2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\roby_\\source\\repos\\apisex2\\apisex2\\APIsEx2.csproj": {
+    "C:\\Users\\roby_\\source\\repos\\APIsEx2\\apisex2\\APIsEx2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\roby_\\source\\repos\\apisex2\\apisex2\\APIsEx2.csproj",
+        "projectUniqueName": "C:\\Users\\roby_\\source\\repos\\APIsEx2\\apisex2\\APIsEx2.csproj",
         "projectName": "APIsEx2",
-        "projectPath": "C:\\Users\\roby_\\source\\repos\\apisex2\\apisex2\\APIsEx2.csproj",
+        "projectPath": "C:\\Users\\roby_\\source\\repos\\APIsEx2\\apisex2\\APIsEx2.csproj",
         "packagesPath": "C:\\Users\\roby_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\roby_\\source\\repos\\apisex2\\apisex2\\obj\\",
+        "outputPath": "C:\\Users\\roby_\\source\\repos\\APIsEx2\\apisex2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

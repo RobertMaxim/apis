@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7hW3NBt+p6k5aqRmMVqBOJRZcToGHRHt1elRx8n/K8nXSSE361u+KAZydDso5cd7r/UBhSiUtnV8aiDwXhfKWw==",
+  "dgSpecHash": "f5oKvwa5c1EZka8hSWdItBqDo5vLgJzW1C5EuyI8FY3pz60vhG7Vvu2c2mjhlg4jxnAfqnXTZaTsXvSHX90dBg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\roby_\\source\\repos\\apisex2\\apisex2\\APIsEx2.csproj",
+  "projectFilePath": "C:\\Users\\roby_\\source\\repos\\APIsEx2\\apisex2\\APIsEx2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roby_\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\roby_\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
