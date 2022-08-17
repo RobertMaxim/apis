@@ -22,12 +22,12 @@ namespace APIsEx.Controllers
 
         [Route("Get")]
         [HttpGet]
-        public async Task<ActionResult> GetProducts(string productsID="null")
+        public async Task<ActionResult> GetProducts(string? productsID)
         {
             try
             {
                 
-                if(productsID.Equals("null"))
+                if(string.IsNullOrEmpty(productsID))
                 {
                     var results = await _repository.GetAllProductsAsync();
 
@@ -89,26 +89,49 @@ namespace APIsEx.Controllers
 
         [Route("Update")]
         [HttpPut]
-        public async Task<ActionResult<ProductDto>> Put(int productID, ProductDto product)
+        public async Task<ActionResult<List<ProductDto>>> Put(List<ProductDto> products)
         {
             try
             {
-                var existingProductWithId = await _repository.GetProductAsync(productID);
-                if (existingProductWithId == null) return NotFound($"Couldn't find a product with specified ID {productID}");
+                List<Product> toBeUpdated = new List<Product>();
+                foreach (var item in products)
+                {
+                    var oldCamp = await _repository.GetProductAsync(item.Name);
+                    if (oldCamp == null) return NotFound("One or more products name isn't valid. (Not found in db)");
 
-                _mapper.Map(product, existingProductWithId);
+                    toBeUpdated.Add(oldCamp);
+                }
+
+                foreach (var item in toBeUpdated)
+                {
+                    _mapper.Map(products.Where(p => p.Name.Equals(item.Name)).FirstOrDefault(), item);
+                }
 
                 if (await _repository.SaveChangesAsync())
-                {
-                    return _mapper.Map<ProductDto>(existingProductWithId);
-                }
-                else return BadRequest("Failed to update database");
-            }
+                    return _mapper.Map<List<ProductDto>>(toBeUpdated);
 
+                return BadRequest("No changes made.");
+            }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Database failure");
             }
+        }
+
+        [Route("Put")]
+        [HttpPut]
+        public async Task<ActionResult<ProductDto>> UpdateProduct(ProductDto product)
+        {
+            var existingProductWithId = await _repository.GetProductAsync(product.Name);
+            if (existingProductWithId == null) return NotFound($"Couldn't find a product with specified ID {product.Name}");
+
+            _mapper.Map(product, existingProductWithId);
+
+            if (await _repository.SaveChangesAsync())
+            {
+                return _mapper.Map<ProductDto>(existingProductWithId);
+            }
+            else return BadRequest("Failed to update database");
         }
 
         [Route("Delete")]
@@ -127,7 +150,6 @@ namespace APIsEx.Controllers
                     var product = await _repository.GetProductAsync(int.Parse(productId));
 
                     if (product != null) _repository.Delete(product);
-
                 }
 
                 if (await _repository.SaveChangesAsync())
@@ -138,7 +160,7 @@ namespace APIsEx.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status500InternalServerError,"Null found");
             }
         }
 

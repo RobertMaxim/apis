@@ -18,5 +18,11 @@ namespace APIsEx.Repositories
         {
             return await _context.Products.Where(product => product.ProductId == productId).FirstOrDefaultAsync();
         }
+
+        public async Task<Product> GetProductAsync(string productName)
+        {
+            return await _context.Products.Where(product => product.Name.Equals(productName)).FirstOrDefaultAsync();
+        }
+
     }
 }

@@ -6,6 +6,6 @@ namespace APIsEx.Repositories
     { 
         Task<int> GetOrderCountAsync(int clientID);
         Task<Order[]> GetAllOrdersAsync(int clientID, bool includeCustomer = false);
-        Task<Order> GetOrderAsync(int orderID, bool includeCustomer = false);
+        Task<Order> GetOrderAsync(int orderID, bool includeCustomer = false, bool includeProducts=false);
     }
 }

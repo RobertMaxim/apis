@@ -21,15 +21,14 @@ namespace APIsEx2.Controllers
 
         [Route("Get")]
         [HttpGet]
-        public async Task<ActionResult<OrderDto>> Get(int orderID, bool includeCustomer)
+        public async Task<ActionResult<OrderDto>> Get(int orderID, bool includeCustomer, bool includeProducts)
         {
             try
             {
-                var order = await _repository.GetOrderAsync(orderID, includeCustomer);
+                var order = await _repository.GetOrderAsync(orderID, includeCustomer, includeProducts);
                 if (order == null) return NotFound($"Order with id {orderID} doesn't exist.");
-
-
-                    return Ok(_mapper.Map<OrderDto>(order));
+                
+                return Ok(_mapper.Map<Order>(order));
             }
             catch (Exception)
             {
@@ -83,7 +82,7 @@ namespace APIsEx2.Controllers
             try
             {
                 var order = await _repository.GetOrderAsync(orderId);
-                if(order==null) return NotFound($"No order with this id({orderId})");
+                if (order == null) return NotFound($"No order with this id({orderId})");
 
                 _repository.Delete(order);
                 if (await _repository.SaveChangesAsync())
