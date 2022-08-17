@@ -1,4 +1,4 @@
-﻿using APIsEx.Models;
+﻿using APIsEx2.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIsEx.Repositories
@@ -9,19 +9,38 @@ namespace APIsEx.Repositories
         {
         }
 
-        public async Task<int> GetOrderCountAsync(int clientID, bool status = false)
+        public void Add(Order o)
         {
+
+        }
+
+        public async Task<int> GetOrderCountAsync(int clientID)
+        {
+
             return await _context.Orders.Where(order => order.CustomerId == clientID).CountAsync();
         }
 
-        public async Task<Order[]> GetAllOrdersAsync(int clientID)
+        public async Task<Order[]> GetAllOrdersAsync(int clientID, bool includeCustomer = false)
         {
-            return await _context.Orders.Where(order => order.CustomerId == clientID).ToArrayAsync();
+            IQueryable<Order>query= _context.Orders;
+            if (includeCustomer)
+            {
+                query = query.Include(t => t.Customer);
+            }
+
+            query = query.Where(o => o.CustomerId == clientID);
+
+            return await query.ToArrayAsync();
         }
 
-        public async Task<Order> GetOrderAsync(int orderID)
+        public async Task<Order> GetOrderAsync(int orderID, bool includeCustomer = false)
         {
-            return await _context.Orders.Where(order => order.OrderId == orderID).FirstOrDefaultAsync();
+            IQueryable<Order> query = _context.Orders.Where(order=>order.OrderId==orderID);
+            if (includeCustomer)
+            {
+                query = query.Include(t => t.Customer);
+            }
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

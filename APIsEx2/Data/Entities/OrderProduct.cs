@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace APIsEx.Models
+namespace APIsEx2.Models
 {
     public partial class OrderProduct
     {

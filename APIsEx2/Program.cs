@@ -1,4 +1,4 @@
-using APIsEx.Models;
+using APIsEx2.Models;
 using APIsEx.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +14,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<OnlineShopContext>();
 builder.Services.AddScoped<IRepository, Repository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository,OrderRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

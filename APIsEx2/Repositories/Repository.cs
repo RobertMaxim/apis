@@ -1,4 +1,4 @@
-﻿using APIsEx.Models;
+﻿using APIsEx2.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIsEx.Repositories

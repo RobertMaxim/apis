@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace APIsEx.Models
+namespace APIsEx2.Models
 {
     public partial class OnlineShopContext : DbContext
     {
@@ -35,9 +35,7 @@ namespace APIsEx.Models
             {
                 entity.ToTable("Customer");
 
-                entity.Property(e => e.CustomerId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("CustomerID");
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.Name).HasMaxLength(50);
 
@@ -56,14 +54,14 @@ namespace APIsEx.Models
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.OrderDate).HasColumnType("date");
+                entity.Property(e => e.Date).HasColumnType("date");
 
                 entity.Property(e => e.TotalAmount).HasColumnType("decimal(12, 2)");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Order_Customer1");
             });
 
@@ -89,6 +87,9 @@ namespace APIsEx.Models
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("Product");
+
+                entity.HasIndex(e => e.Name, "IX_Product")
+                    .IsUnique();
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 

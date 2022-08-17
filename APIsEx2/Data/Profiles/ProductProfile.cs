@@ -1,5 +1,5 @@
 ﻿using APIsEx.DTOs;
-using APIsEx.Models;
+using APIsEx2.Models;
 using AutoMapper;
 
 namespace APIsEx.Data.Profiles

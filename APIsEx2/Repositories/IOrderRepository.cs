@@ -1,11 +1,11 @@
-﻿using APIsEx.Models;
+﻿using APIsEx2.Models;
 
 namespace APIsEx.Repositories
 {
     public interface IOrderRepository:IRepository
     { 
-        Task<int> GetOrderCountAsync(int clientID,bool status = false);
-        Task<Order[]> GetAllOrdersAsync(int clientID);
-        Task<Order> GetOrderAsync(int orderID);
+        Task<int> GetOrderCountAsync(int clientID);
+        Task<Order[]> GetAllOrdersAsync(int clientID, bool includeCustomer = false);
+        Task<Order> GetOrderAsync(int orderID, bool includeCustomer = false);
     }
 }

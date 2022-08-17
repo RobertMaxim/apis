@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace APIsEx.Models
+namespace APIsEx2.Models
 {
     public partial class Order
     {
@@ -12,9 +12,9 @@ namespace APIsEx.Models
 
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
-        public DateTime OrderDate { get; set; }
+        public DateTime Date { get; set; }
         public decimal TotalAmount { get; set; }
-        public bool OrderStatus { get; set; }
+        public bool Canceled { get; set; }
         public string Address { get; set; } = null!;
 
         public virtual Customer Customer { get; set; } = null!;
