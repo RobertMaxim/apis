@@ -1,4 +1,5 @@
-﻿using APIsEx2.Models;
+﻿using APIsEx.DTOs;
+using APIsEx2.Models;
 
 namespace APIsEx2.DTOs
 {

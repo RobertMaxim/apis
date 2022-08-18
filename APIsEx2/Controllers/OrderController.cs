@@ -28,7 +28,7 @@ namespace APIsEx2.Controllers
                 var order = await _repository.GetOrderAsync(orderID, includeCustomer, includeProducts);
                 if (order == null) return NotFound($"Order with id {orderID} doesn't exist.");
                 
-                return Ok(_mapper.Map<Order>(order));
+                return Ok(_mapper.Map<OrderDto>(order));
             }
             catch (Exception)
             {

@@ -83,8 +83,6 @@ namespace APIsEx.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
-
-            return BadRequest();
         }
 
         [Route("Update")]

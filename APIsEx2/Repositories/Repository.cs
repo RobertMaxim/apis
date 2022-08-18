@@ -21,6 +21,13 @@ namespace APIsEx.Repositories
             _context.Remove(entity);
         }
 
+        public void Update<T>(T entity) where T : class
+        {
+            _context.Set<T>().Attach(entity);
+            var entry = _context.Entry(entity);
+            entry.State = EntityState.Modified;
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync()) > 0;

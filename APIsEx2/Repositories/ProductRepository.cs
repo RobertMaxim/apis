@@ -23,6 +23,5 @@ namespace APIsEx.Repositories
         {
             return await _context.Products.Where(product => product.Name.Equals(productName)).FirstOrDefaultAsync();
         }
-
     }
 }
