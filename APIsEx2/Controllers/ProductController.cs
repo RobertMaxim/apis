@@ -181,7 +181,6 @@ namespace APIsEx.Controllers
             }
         }
 
-
         [Route("Stock")]
         [HttpGet]
         public async Task<ActionResult> CheckProductStock(int productID)
@@ -199,7 +198,6 @@ namespace APIsEx.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
-
             }
         }
     }

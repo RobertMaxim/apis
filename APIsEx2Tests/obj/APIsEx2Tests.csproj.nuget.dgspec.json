@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[17.1.0, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.2, )"
+            },
             "NUnit": {
               "target": "Package",
               "version": "[3.13.3, )"
@@ -67,6 +71,10 @@
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "xunit.extensibility.core": {
+              "target": "Package",
+              "version": "[2.4.2, )"
             }
           },
           "imports": [

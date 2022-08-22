@@ -12,6 +12,7 @@ namespace APIsEx2.Data.Profiles
                 .ForMember(o=>o.Products,c=>c.MapFrom(e=>e.OrderProducts))
                 .ForMember(o=>o.Name,c=>c.MapFrom(e=>e.Customer.Name))
                 .ForMember(o=>o.Phone,c=>c.MapFrom(e=>e.Customer.Phone))
+                .ForMember(o=>o.OrderDate,c=>c.MapFrom(e=>e.Date))
                 .ReverseMap();
             CreateMap<OrderProduct, OrderProductDto>()
                 .ForMember(o => o.UnitPrice, c => c.MapFrom(e => e.Product.UnitPrice))

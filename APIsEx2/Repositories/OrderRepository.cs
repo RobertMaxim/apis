@@ -10,11 +10,6 @@ namespace APIsEx.Repositories
         {
         }
 
-        public void Add(Order o)
-        {
-
-        }
-
         public async Task<int> GetOrderCountAsync(int clientID)
         {
 

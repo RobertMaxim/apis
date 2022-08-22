@@ -34,7 +34,7 @@ namespace APIsEx2.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-        }
+         }
 
         [Route("Status")]
         [HttpGet]
@@ -48,8 +48,8 @@ namespace APIsEx2.Controllers
                 if (result.Canceled) return Ok("Not canceled");
 
                 return Ok("This order is canceled.");
-
             }
+
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
@@ -69,11 +69,9 @@ namespace APIsEx2.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
 
         [Route("Delete")]
         [HttpDelete]
@@ -87,7 +85,8 @@ namespace APIsEx2.Controllers
                 _repository.Delete(order);
                 if (await _repository.SaveChangesAsync())
                     return Accepted("Deleted succesfully");
-                else return BadRequest("Db failure");
+                else 
+                    return BadRequest("Db failure");
             }
             catch (Exception)
             {
